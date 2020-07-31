@@ -12,6 +12,17 @@
  $ekle="UPDATE anliksiparis set adet='$adet' where urunid='$urunid' and masaid='$masaid'";
 $ekleson=$db->prepare($ekle);
 $ekleson->execute();
+$sorgu="SELECT * FROM mutfak where urunid='$urunid' and masaid='$masaid'";
+$sonuc=$db->prepare($sorgu);
+$sonuc->execute();
+$sonucson=$sonuc->get_result();
+$son=$sonucson->fetch_assoc();
+$mutfakadet=$son["adet"];
+$mutfakadet-=1;
+$update="UPDATE mutfak set adet='$mutfakadet' where urunid='$urunid' and masaid='$masaid'";
+$eksilt=$db->prepare($update);
+$eksilt->execute();
+
 header("Location: masadetay.php?masaid=$masaid");
 
     

@@ -13,7 +13,7 @@ if (!$_POST):
     $silme->execute();
 
     $sorgu="UPDATE `mutfak` SET `durum` = '0'
-    WHERE masaid=$masaid and urunid=$urunid and adet=$adet";
+    WHERE masaid=$masaid and urunid=$urunid";
     $silme=$db->prepare($sorgu);
     $silme->execute();
 

@@ -47,10 +47,10 @@ function teksordu($vt,$sorgu) {
         }
         
       function mutfaksparis($db){
-        $sorgumasalar="SELECT distinct masaid from mutfak order by masaid asc";
+        $sorgumasalar="SELECT distinct masaid from mutfak";
         $sonucmasalar=$this->sqlsorgu($db,$sorgumasalar);
         while($sonucmasalarson=$sonucmasalar->fetch_assoc()){
-          //masanın numarasını bulmak için kullanılan alan 
+          //masanın adını bulmak için kullanılan alan 
           $masaid=$sonucmasalarson["masaid"];
           $select="SELECT * FROM masalar where id=$masaid";
           $sonuc=$this->sqlsorgu($db,$select)->fetch_assoc();
@@ -70,7 +70,7 @@ function teksordu($vt,$sorgu) {
                 <th >Zaman</th>
                 <th >Ürün </th>
                 <th >Adet</th>
-                <th >Durum</th>
+                <th >Durum<a class="btn btn-danger text-center" href="komplesil.php?masaid='.$masaid.'">FULL</th>
              
               </tr>
             </thead>
