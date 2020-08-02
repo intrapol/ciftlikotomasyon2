@@ -21,26 +21,24 @@ $mutfak = new mutfak;
 
 <div class="container-filued">
     <div class="row">
-    <!--<div class="card border-success mb-3" style="max-width: 23rem;">
-  <div class="card-header bg-transparent border-success">MASA ADI</div>
-  <div class="card-body ">
-    <table>
-        <tr>
-        <td>zaman</td>
-
-            <td>ürünadı</td>
-            <td>ürünadet </td>
-            <td><form action="" method="post">
+    <div class="card border-success  mb-3" style="max-width: 23rem;">
+            <div class="card-header bg-info border-success text-lg-center "><h3 class="alert-info">TOPLAM ÜRÜNLER</h3></div>
+            <div class="card-body ">
+              <table border="1">
+              <thead>
+              <tr class="table-info">
+                <th >ÜRÜN AD</th>
+                <th >TOPLAM ADET</th>             
+              </tr> 
+                <?php 
+                $mutfak->toplamurun($db);
                 
-            <input type="button" value="HAZIR" class="btn btn-success"></form></td>
-
-
-        </tr>
-        
+                ?>
+                <tr>
+         
     </table>
   </div>
-  <div class="card-footer bg-transparent border-success">SİPARİŞ ZAMANI</div>
-</div>-->
+</div>
 
 
 <?php 

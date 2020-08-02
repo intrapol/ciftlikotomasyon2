@@ -45,7 +45,32 @@ function teksordu($vt,$sorgu) {
         return $c=$b->get_result();
        
         }
-        
+
+        function toplamurun($db){
+        $urunsorgu="SELECT distinct urunid from mutfak";
+        $urunsorguson=$this->sqlsorgu($db,$urunsorgu);
+        while($sonuc=$urunsorguson->fetch_assoc()){
+          $toplamadet=0;
+          $urunid=$sonuc["urunid"];
+          $urunadbulma="SELECT * from urunler where id=$urunid";
+          $urunadbulma=$this->sqlsorgu($db,$urunadbulma);
+          $urunadd=$urunadbulma->fetch_assoc(); 
+          $urunad=$urunadd["ad"];
+          $string=$urunad;
+			$string{0}=" ";
+			$string{1}=" ";
+			$urunad=ltrim($string);
+          $urunadet="SELECT * from mutfak where urunid=$urunid";
+          $urunadetson=$this->sqlsorgu($db,$urunadet);
+          while($urunadett=$urunadetson->fetch_assoc()){
+            $toplamadet=$toplamadet+$urunadett["adet"];
+        }
+          echo ' <tr>
+          <th>'.$urunad.'</th>                
+          <th class="text-center">'.$toplamadet.'</th>                
+  </tr> ';
+        }
+      }
       function mutfaksparis($db){
         $sorgumasalar="SELECT distinct masaid from mutfak";
         $sonucmasalar=$this->sqlsorgu($db,$sorgumasalar);
